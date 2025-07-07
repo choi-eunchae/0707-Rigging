@@ -30,6 +30,12 @@ public class PipeSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.bird.isLive)
+        {
+            CancelInvoke(nameof(SpawnPipes)); // 죽으면 파이프 생성 멈춤
+            return;
+        }
+
         if (Time.time - lastSpeedUpTime > speedUpInterval && pipeMoveSpeed < maxSpeed)
         {
             pipeMoveSpeed = Mathf.Min(pipeMoveSpeed + speedUpAmount, maxSpeed);

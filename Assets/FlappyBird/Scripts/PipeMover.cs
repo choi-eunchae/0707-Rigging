@@ -7,6 +7,9 @@ public class PipeMover : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.bird.isLive)
+            return;
+
         float moveSpeed = FindAnyObjectByType<PipeSpawner>().pipeMoveSpeed;
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 

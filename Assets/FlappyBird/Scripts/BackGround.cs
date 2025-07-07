@@ -8,14 +8,17 @@ public class BackGround : MonoBehaviour
     public float speed = 3.0f;
 
 
+
     void Update()
-    {
+    {   if (!GameManager.Instance.bird.isLive)
+            return;
+
         transform.position += Vector3.left * speed * Time.deltaTime;
 
         if (transform.position.x < -width)
         {
             transform.position += new Vector3(width * 2f, 0, 0);
         }
-        
     }
+    
 }

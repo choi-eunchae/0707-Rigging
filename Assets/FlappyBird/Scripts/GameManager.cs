@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        bird.isLive = false;
         Invoke("GameOverUIon", 1.5f);
         timerTextUI.text = "Time: " + timer.ToString("F2");
         timerText.gameObject.SetActive(false);
@@ -55,8 +56,8 @@ public class GameManager : MonoBehaviour
 
         // 텍스트에만 펄스 애니메이션 적용 (작아졌다 커졌다 반복)
         gameOverTextTransform
-            .DOScale(0.5f, 0.3f)
-            .SetLoops(3, LoopType.Yoyo)
+            .DOScale(0.6f, 0.3f)
+            .SetLoops(4, LoopType.Yoyo)
             .SetEase(Ease.InOutSine);
     }
     public void Restart()
